@@ -1,0 +1,121 @@
+/*
+ * Created by Clemmensen on 2019-3-23.
+ * Corresponding author: Clemmensen
+ * Email: fanghj133@163.com
+ */
+
+*{
+	margin: 0;
+	padding: 0;
+}
+html, body{
+	height: 100%;
+	width: 100%;
+}
+ul, li{
+	list-style: none;
+}
+
+/* container
+ * width: 100%; height: 310px;
+ */
+.container{
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+/* slider
+ * width: 700%; height: 100%;
+ */
+#slider{
+	width: 700%;
+	height: 100%;
+	/*position: relative;*/
+	transition: margin-left .5s;
+	-webkit-transition: margin-left .5s;
+	-moz-transition: margin-left .5s;
+	-o-transition: margin-left .5s;
+}
+.slider_items{
+	float: left;
+	width: calc(100% / 7);
+	height: 100%;	/*继承父元素的高度*/
+	-webkit-background-size: 100%;
+	background-size: 100%;
+}
+#slider_items_a{
+	background: url(../images/MtIbukiyama_ZH-CN6882861958_1920x1080.jpg) no-repeat;
+}
+#slider_items_b{
+	background: url(../images/MudstoneBadlands_ZH-CN9863836503_1920x1080.jpg) no-repeat;
+}
+#slider_items_c{
+	background: url(../images/OakTreeMaize_EN-CN10918567606_1920x1080.jpg) no-repeat;
+}
+#slider_items_d{
+	background: url(../images/OlivesTunisia_ZH-CN11038020957_1920x1080.jpg) no-repeat;
+}
+#slider_items_e{
+	background: url(../images/PotashPonds_ZH-CN13213047688_1920x1080.jpg) no-repeat;
+}
+#slider_items_f{
+	background: url(../images/PrusikPeak_ZH-CN10980657640_1920x1080.jpg) no-repeat;
+}
+#slider_items_g{
+	background: url(../images/Rapadalen_ZH-CN11779950174_1920x1080.jpg) no-repeat;
+}
+
+/*control_btns*/
+.move-left, .move-right{
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: 20%;
+	/*width: calc(20% / 7);*/
+	cursor: pointer;
+	z-index: 11;
+}
+.move-left{
+	/*要以宽度100%的container为参考,而不是.slider为参考，所以去掉.slider的position:relative;*/
+	left: 0;
+}
+.move-right{
+	left: 80%;
+	/*left: calc(80% / 7);*/
+}
+.move-left:hover{
+	background: url("../images/arl.png") no-repeat center center;
+}
+.move-right:hover{
+	background: url("../images/arr.png") no-repeat center center;
+}
+
+/*slider_bar*/
+.slider_bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background: rgba(0,0,0,0.5);
+}
+.slider_bar > li{
+	display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    height: 6px;
+    padding: 9px 0;
+    margin: 0 2px;
+}
+.slider_bar > li > a {
+    display: block;
+    width: 10px;
+    height: 6px;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+.slider_bar > li.on a, .slider_bar > li.on:hover a {
+	width: 30px; 
+	background-color: #2196F3;
+}
