@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>todoList</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			font-family: 'Microsoft Yahei', Helvetica, sans-serif;
+			background: linear-gradient(to left, #c0c0aa, #11ccee);
+			/*CSS3 linear gradient, right to left*/
+		}
+		#container{
+			width: 360px;
+		    margin: 100px auto;
+		    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+		    /* box-shadow: h-shadow v-shadow blur spread color inset; */
+		    /* 水平阴影的位置 垂直阴影的位置 模糊距离 阴影的大小 阴影的颜色 从外层的阴影（开始时）改变阴影内侧阴影*/
+		}
+		h1{
+		    background: #2980b9;
+		    color: #fff;
+		    margin: 0;
+		    padding: 10px 20px;
+		    text-transform: uppercase;
+		    /*字母转大写*/
+		    font-size: 24px;
+		    font-weight: normal;
+		}
+		h1 > i {
+		    float: right;
+		    cursor: pointer;
+		}
+		input {
+		    font-size: 18px;
+		    background-color: #eee;
+		    width: 100%;
+		    padding: 13px 13px 13px 20px;
+		    color: #2980b9;
+		    border: 3px solid rgba(0, 0, 0, 0);
+		    box-sizing: border-box;
+		    /*CSS3 box-sizing*/
+		}
+		ul{
+			list-style: none;
+		}
+		#container li {
+		    cursor: pointer;
+		    background: #fff;
+		    height: 40px;
+		    line-height: 40px;
+		    color: #666;
+		}
+		#container li:nth-child(2n) {
+		    background: #eee;
+		}
+		li span {
+		    background: #e74c3c;
+		    color: #000;
+		    display: inline-block;
+		    /*行内块元素才能设置宽、高*/
+		    height: 40px;
+		    width: 0;
+		    /*width:0; 横向上不占据空间，只有margin-right*/
+		    margin-right: 20px;
+		    transition: all .5s;
+		    /*过渡效果*/
+		    text-align: center;
+		    /*居中*/
+		    opacity: 0;
+		    /*透明度为0，隐藏*/
+		}
+		li:hover span {
+			width: 40px;
+			opacity: 1;
+			/*宽度、透明度*/
+		}
+		.completed{
+			text-decoration: line-through;
+		    color: #ccc !important;
+		}
+	</style>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+<body>
+	<div id="container">
+		<h1>
+			To-Do List
+			<i class="fa fa-plus"></i>
+		</h1>
+		<div class="slide" style="display: none;">
+			<input type="text" placeholder="New Item" id="input">
+		</div>
+		<ul id="ulList">
+			<!-- <li>
+				<span class="oSpan">
+					<i class="fa fa-trash-o"></i>
+				</span>
+				Add a To-Do
+			</li>
+			<li>
+				<span class="oSpan">
+					<i class="fa fa-trash-o"></i>
+				</span>
+				Delete a To-Do
+			</li>
+			<li>
+				<span class="oSpan">
+					<i class="fa fa-trash-o"></i>
+				</span>
+				Check off a To-Do
+			</li> -->
+		</ul>
+	</div>
+<script>
+	window.onload = function(){
+		getInfo();
+		update();
+		addItem();
+	}
+
+	var EventUtil = {
+		addHandler : function(obj, event, callback){
+			if(obj.addEventListener){
+				obj.addEventListener(event, callback);
+			}
+			else if(obj.attachEvent){
+				obj.attachEvent('on'+event, callback);
+			}
+			else{
+				obj['on'+event]=callback;
+			}
+		}
+	}
+	// 函数式编程！
+	function getInfo(){
+		var info = document.querySelector("#ulList")
+		if(localStorage.getItem('localKey')){
+			var gInfo = localStorage.getItem('localKey')
+			for(var i=0; i<JSON.parse(gInfo).length; i++){
+				var oItem = "<li><span><i class='fa fa-trash-o'></i></span>" + JSON.parse(gInfo)[i] + "</li>";
+				info.innerHTML += oItem;
+			}
+		}
+	}
+
+	function setInfo(){
+		var info = document.querySelector("#ulList")
+		var localValue = info.innerText.split('\n').map(function(item){
+			// console.log(info.innerText)
+			return item.trim()
+		})
+		localStorage.setItem('localKey', JSON.stringify(localValue))
+		console.log(localValue)
+		if(!localValue[0]){
+			// localValue == [""]
+			console.log("clear")
+			localStorage.removeItem("localKey");
+		}
+	}
+
+	function update(){
+		// slide
+		var oI = document.querySelector('.fa-plus')
+		var slide = document.querySelector('.slide')
+		EventUtil.addHandler(oI, 'click', function(){
+			slide.style.display=="none"? slide.style.display="block" : slide.style.display="none";
+		})
+		// oLis[i].completed
+		var oLis = document.querySelectorAll("li")
+		for(let i = 0; i<oLis.length; i++){
+			EventUtil.addHandler(oLis[i], 'click', function(){
+				oLis[i].className == "completed" ? oLis[i].className = "" : oLis[i].className = "completed"
+			})
+		}
+		// hide oLis[i]
+		var oSpans = document.querySelectorAll("span")
+		for(let i = 0; i<oSpans.length; i++){
+			EventUtil.addHandler(oSpans[i], 'click', function(){
+				oLis[i].style.display = "none";
+				setInfo();
+			})
+		}
+	}
+
+	function addItem(){
+		var oUl = document.querySelector("#ulList")
+		var oInput = document.querySelector('#input')
+		EventUtil.addHandler(oInput, 'keypress', function(){
+			if(oInput.value && event.keyCode == 13){
+				var newItem = "<li><span><i class='fa fa-trash-o'></i></span>" + oInput.value + "</li>";
+				oUl.innerHTML += newItem;
+				oInput.value = "";
+				setInfo();
+				update();
+				// 调用update()，避免只有页面刷新的时候才能给刚加入的li绑定事件
+			}
+		})
+	}
+</script>
+
+</body>
+</html>
