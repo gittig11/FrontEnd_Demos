@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#timer{
+			width: 150px;
+			height: 60px;
+			position: absolute; 
+			top: 50%;
+			margin-top: -50px;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		input{
+			width: 40px;
+			height: 20px;
+			font-size: 18px;
+			text-align: center;
+			margin-right: 5px;
+		}
+		.btn{
+			width: 40px;
+			height: 25px;
+			font-size: 16px;
+			margin-top: 10px;
+			margin-left: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="timer">
+		<input type="text" value="1" />分
+		<input type="text" value="2" />秒
+		<br />
+		<button id="btn" class="btn">开始</button>
+		<button id="btnPause" class="btn">暂停</button>
+	</div>
+<script>
+/*
+ * Created by Clemmensen on 2019-3-26.
+ * Corresponding author: Clemmensen
+ * Email: fanghj133@163.com
+ */
+(function(){
+	var oInps=document.getElementsByTagName("input")
+	var btn=document.getElementById("btn")
+	var btnPause=document.getElementById("btnPause")
+
+	//clickOnce用于判断是否调用过定时器，定时器是不是在运行中
+	clickOnce=false;
+	
+	//开始定时器
+	function startTimer(){
+		clickOnce=true;
+		
+		//使用自定义的秒数
+		let i = oInps[1].value;
+		//把定时器aTimer设置为全局变量
+		aTimer = setInterval(function(){
+			i--;
+			oInps[1].value=i;			
+			if(i==0){
+			//秒数减为0
+				if(oInps[0].value==0){
+				//分钟数为0
+					PauseTimer();
+				}
+				else{
+				//分钟数不为0
+					i=60;
+					//这里赋值60，经过i--; 下一秒显示59.
+				}
+			}
+			if(i==59){
+				oInps[0].value-=1;
+			}
+		}, 1000)
+	}
+
+	//暂停定时器
+	//每次获取input的value值，所以能实现暂停功能。
+	function PauseTimer(){
+		clearInterval(aTimer);
+		clickOnce=false;
+	}
+	
+	btn.onclick=function(){
+		if(clickOnce){
+			PauseTimer();
+			startTimer();
+		}
+		else{
+			startTimer();
+		}
+	}
+	btnPause.onclick=function(){
+		if(clickOnce){
+			PauseTimer();
+		}
+	}
+})()
+</script>
+</body>
+</html>

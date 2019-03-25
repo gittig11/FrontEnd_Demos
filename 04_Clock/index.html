@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#clock{
+			text-align: center;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<script>
+/*
+ * Created by Clemmensen on 2019-3-26.
+ * Corresponding author: Clemmensen
+ * Email: fanghj133@163.com
+ */
+	window.onload = function (){
+		var oClock = document.getElementById("clock");	
+		var aSpan = oClock.getElementsByTagName("span");
+		function getTimes (){
+			var oDate = new Date();
+			var aDate = [oDate.getHours(), oDate.getMinutes(), oDate.getSeconds()];
+			for (var i in aDate){
+				aSpan[i].innerHTML = format(aDate[i])
+			}
+		}
+		function format(a){
+			return a.toString().replace(/^(\d)$/, "0$1")
+			//数字转字符串
+			//正则 /^(\d)$/：单个数字时，前面补上0
+		}
+		setInterval(getTimes, 1000);
+		//隔1s调用一次函数
+		getTimes();
+		//立即调用
+	}
+</script>
+</head>
+<body>
+	<div id="clock">
+		<span></span>点<span></span>分<span></span>秒
+	</div>
+</body>
+</html>
