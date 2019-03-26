@@ -24,5 +24,3 @@
 ### Font-Awesome.min.css
 ### EventUtil.addHandler(obj, event, callback)
 ### Functional Programming
-
-
