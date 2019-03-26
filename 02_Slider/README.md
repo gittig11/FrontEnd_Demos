@@ -15,4 +15,3 @@ https://gittig11.github.io/demos/02_Slider/
 * throttle(fn, delay)
 * querySelector() & querySelectorAll()
 * Width-responsive
-
