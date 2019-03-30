@@ -1,9 +1,11 @@
-Name : 方浩吉
-Job :    前端开发工程师
-Mail :  `fanghj3@mail2.sysu.edu.cn`
+## 个人简介
+
+* Name : 方浩吉
+* Job :    前端开发实习生
+* Mail :  `fanghj3@mail2.sysu.edu.cn`
 
 
-##教育背景 Education
+## 教育背景 Education
 
 * 2013/08 ~ 2017/06  中山大学 化学生物学；
 * 2017/09 ~ 至今        中山大学 无机化学 / 自学前端开发；( 英语六级521分；研一获得三等奖学金 )
@@ -38,7 +40,7 @@ Mail :  `fanghj3@mail2.sysu.edu.cn`
 
 * `Slider`
 
-  `Slider`自动切换和手动切换；能根据页面大小自适应`Slider`的宽度；使用了节流函数`throttle`。
+  实现了`Slider`的自动切换和手动切换效果；能根据页面大小自适应`Slider`的宽度；使用了节流函数`throttle`。
 
 * 倒计时`Countdown Clock`
 
@@ -57,5 +59,7 @@ Mail :  `fanghj3@mail2.sysu.edu.cn`
 利用`Hexo`和`Github Pages`搭建的博客，使用`Markdown`语法编写。平常习惯用`Evernote`整理笔记。
 
 ## 自我评价 Evaluation
+
 ​	虽然是化学专业的学生，但是我对于前端开发有较大的兴趣和热情。目前前端开发主要靠自学，平常会阅读《JavaScript高级程序设计》、《你不知道的JavaScript》等相关技术书籍，关注国内外的优秀平台和博客，如MDN、Stack Overflow、掘金、Segment Fault、W3CPlus、Taobao FE、AlloyTeam、张鑫旭的Blog、阮一峰的Blog等，有查阅中英文文档的习惯，平常喜欢研究和学习一些Web相关的新技术和新知识。
+
 ​	希望能加入贵公司，和优秀的人一起共事、学习，逐渐成长为可以独当一面的人才，为公司的发展贡献一份力量。
