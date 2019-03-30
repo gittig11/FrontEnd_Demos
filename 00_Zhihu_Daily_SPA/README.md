@@ -192,6 +192,7 @@
     ```
 
 8. `lib-flexible` 和 `px2rem-loader`
+
     这里引入手淘`lib-flexible`适配移动端，方案介绍：[使用Flexible实现手淘H5页面的终端适配](https://www.w3cplus.com/mobile/lib-flexible-for-html5-layout.html)。
 
     `lib-flexble`的作用是：
@@ -213,7 +214,7 @@
 
 10. 模块化开发
 
-  模块化开发的代码容易维护。模块化的过程思考了很多，比如怎么写模块、怎么排版、怎么`import`入`Home.vue`等。
+  模块化开发的代码容易维护。模块化的过程思考了很多，比如怎么写模块、怎么排版、怎么在`Home.vue`中导入等等。
 
   比如首页分为了`Header`、`Swiper`、`Content`、`Footer`几个模块，在`components`目录下分别建立对应的目录，使用的时候`import`进来并挂载在`components`上。
 
