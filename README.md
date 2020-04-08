@@ -7,5 +7,5 @@
 * 03_Countdown Clock
 * 02_Slider
 * 01_To-do List
-* 00_Zhihu_Daily_SPA
+* <del>00_Zhihu_Daily_SPA</del>
 
