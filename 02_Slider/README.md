@@ -1,7 +1,7 @@
 # Slider
 
 ## Live Demo
-https://gittig11.github.io/demos/02_Slider/
+https://gittig11.github.io/FrontEnd_Demos/02_Slider/
 
 
 ## Overview

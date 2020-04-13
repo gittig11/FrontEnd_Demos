@@ -1,7 +1,7 @@
 # Slider
 
 ## Live Demo
-https://gittig11.github.io/demos/04_Clock/
+https://gittig11.github.io/FrontEnd_Demos/04_Clock/
 
 
 ## Overview
