@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>瀑布流新闻站</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    ul,li {
+      list-style: none;
+    }
+    .container {
+      width: 900px;
+      margin: 0 auto;
+    }
+    .clearfix::after {
+      content: "";
+      display: block; 
+      clear: both;
+    }
+
+    /*父元素.picture相对定位，宽度900px，分布三个子元素
+    所有的子元素绝对定位，top、left通过js设置*/
+    .picture {
+      position: relative;
+    }
+    .picture .item {
+      box-sizing: border-box;  /*width/height包含了border和padding部分*/
+      position: absolute;
+      padding: 0 0 10px 0;
+      width: 280px;  /* width 280 + margin 10*2 = 300px*/
+      /*高度由内容撑开，高度主要受图片高度影响*/
+      margin: 10px;
+      border: 1px solid #dfdfdf;
+      background: #fff;
+      /*设置为透明*/
+      opacity: 0;
+      /*透明度的渐变*/
+      transition: all 2s;
+    }
+
+    .item img {
+      width: 260px;
+      margin: 10px;
+    }
+    .item .title {
+      height: 25px;
+      margin: 0 12px;
+      border-bottom: 1px solid #dbdbdb;
+    }
+    .item .desp {
+      font-size: 12px;
+      line-height: 1.8;
+      margin: 10px 15px 0;
+      color: #aaa;
+    }
+
+    /*隐藏*/
+    #load {
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <ul class="picture clearfix">
+      <!-- <li class="item">
+        <a href="">
+          <img src="" alt="">
+        </a>
+        <h4 class="title">标题</h4>
+        <p class="desp">Lorem ipsum dolor sit amet, consectetur.</p>
+      </li> -->
+    </ul>
+    <div id="load">Can you see me?</div>
+  </div>
+  <script src="https://unpkg.com/jquery"></script>
+  <script src="index.js"></script>
+</body>
+</html>
