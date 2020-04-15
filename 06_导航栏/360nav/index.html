@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>360导航栏</title>
+	<link rel="stylesheet" href="style1.css">
+</head>
+<body>
+	<div class="box">
+		<header>
+			<nav class="nav">
+				<ul>
+					<li><a href="">回旧版</a></li>
+					<li><a href="">设为主页</a></li>
+					<li class="skin">
+						<a href="">
+							换肤
+							<span class="icon"></span>
+						</a>
+					</li>
+					<li class="login">
+						<img src="http://quc.qhimg.com/dm/20_20_80/t014987b2ab2e751b14.png" alt="" class="avatar">
+						<a href="" class="a1">登录</a>
+						<a href="" class="a2">注册</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+	</div>
+</body>
+<!-- <script>
+function $(dom){
+	return document.querySelector(dom);
+};
+var box = $(".box");
+var origin = document.documentElement.clientWidth;
+// console.log(document.documentElement.clientWidth);
+function debounce(fn, wait) {	// 防抖
+    var timeout = null;
+    return function() {
+        if(timeout) {
+            clearTimeout(timeout);
+        }
+        timeout = setTimeout(fn, wait);    //在定时器中调用fn，因此fn中的this指向window
+    }
+}
+var num = 0;
+function handle() {	// 处理函数
+	num += 100;
+    console.log(document.documentElement.clientWidth);
+    box.style.left += num + "px";
+}
+window.addEventListener('resize', debounce(handle, 1000));
+</script> -->
+</html>

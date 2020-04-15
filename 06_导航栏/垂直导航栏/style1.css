@@ -1,0 +1,33 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-family: "open sans", sans-serif;
+	font-size: 14px;
+	line-height: 1.4em;
+	min-width: 600px;
+}
+.container{
+	width: 160px;
+	background-color: #222;
+}
+.menu{
+	list-style: none;	/*去掉li的圆点*/
+	width: 160px;
+}
+.menuitem{	/*最终每个li高度为39px，即14*1.4+10*2*/
+	min-height: 34px;
+	cursor: pointer;
+	text-align: center;
+}
+.menuitem a{
+	display: block;	/*宽度不是文字宽度*/
+	padding: 10px 0;
+	color: #fff;
+	text-decoration: none;	/*去下划线*/
+}
+a:hover{
+	color: cyan;
+	background-color: #111;
+}

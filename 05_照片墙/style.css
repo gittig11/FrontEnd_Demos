@@ -1,0 +1,83 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background-color: #eee;
+}
+.container{
+	width: 960px;
+	height: 450px;
+	margin: 60px auto;
+	position: relative;
+}
+.pic{
+	width: 150px;
+	padding: 10px;
+	background: #fff;
+	border: 1px solid #ddd;
+	box-shadow: 2px 2px 3px rgba(50, 50, 50, 0.4);
+	position: relative;	/*需要设置相对定位，left和top属性才能生效*/
+	z-index: 1;
+}
+.pic:hover{
+	z-index: 2;
+	box-shadow: 15px 15px 20px rgba(50, 50, 50, 0.4);
+	transform: rotate(0deg) scale(1.20);	/*角度归0、缩放*/
+	-webkit-transform: rotate(0deg) scale(1.20);
+	transition: all 0.5s ease-in;	/*过渡效果*/
+}
+.pic1{
+	transform: rotate(-15deg);
+	-webkit-transform: rotate(-15deg);
+	left: 10px;
+	top: 0;
+}
+.pic2{
+	transform: rotate(10deg);
+	-webkit-transform: rotate(10deg);
+	left: 0px;
+	top: 0;
+}
+.pic3{
+	transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
+	left: 0px;
+	top: 0;
+}
+.pic4{
+	transform: rotate(10deg);
+	-webkit-transform: rotate(10deg);
+	left: 20px;
+	top: 0;
+}
+.pic5{
+	transform: rotate(-5deg);
+	-webkit-transform: rotate(-5deg);
+	left: 100px;
+	top: 0;
+}
+.pic6{
+	transform: rotate(-10deg);
+	-webkit-transform: rotate(-10deg);
+	left: -40px;
+	top: 0;
+}
+.pic7{
+	transform: rotate(15deg);
+	-webkit-transform: rotate(15deg);
+	left: 30px;
+	top: 10px;
+}
+.pic8{
+	transform: rotate(-10deg);
+	-webkit-transform: rotate(-10deg);
+	left: 120px;
+	top: 40px;
+}
+.pic9{
+	transform: rotate(5deg);
+	-webkit-transform: rotate(5deg);
+	left: 200px;
+	top: 50px;
+}
