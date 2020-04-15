@@ -1,9 +1,6 @@
-预览效果：
-
-https://gittig11.github.io/FrontEnd_Demos/07_waterfall-sinanews/
+[预览效果](https://gittig11.github.io/FrontEnd_Demos/07_waterfall-sinanews/)
 
 瀑布流的原理：
-
 - 设置图片宽度一致
 - 页面主体分为三列
 - 当图片加载完成，每次把新的子元素添加到高度最小的那一列。
