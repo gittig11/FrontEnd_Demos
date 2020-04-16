@@ -2,8 +2,8 @@
 
 > Created on 2019-03-24
 
-* [09_parallax_website_视差滚动效果]()
-* [08_JS实现可调宽度侧边栏](https://codepen.io/Gittig/pen/RwWrNeQ)]
+
+* [08_parallax_website_视差滚动效果](https://gittig11.github.io/FrontEnd_Demos/08_parallax_website/)
 * [07_waterfall-sinanews](https://gittig11.github.io/FrontEnd_Demos/07_waterfall-sinanews/)
 * 06_导航栏
 	
