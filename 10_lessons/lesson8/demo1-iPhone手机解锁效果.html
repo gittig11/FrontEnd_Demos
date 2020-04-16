@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#iphone{
+				position: relative;
+				width: 426px;
+				height: 640px;
+				margin: 10px auto;
+				/*background: url(img/1.jpg) no-repeat;*/
+				background: url(http://fgm.cc/iphone/1.jpg) no-repeat;
+			}
+			#lock{
+				position: absolute;
+				bottom: 33px;
+				left: 50%;
+				margin-left: -179px;
+				width: 358px;
+				height: 62px;
+			}
+			#lock span{
+				position:absolute;
+				width:93px;
+				height:62px;
+				cursor:pointer;
+				background:url(http://fgm.cc/iphone/btn.jpg) no-repeat;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="iphone">
+			<div id="lock">
+				<span></span>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	var iPhone = document.getElementById("iphone");
+	var oLock = document.getElementById("lock");
+	var oBtn = oLock.getElementsByTagName("span")[0];
+	var disX = 0;
+	//btn最大的位移：oLock的宽度-btn按钮的宽度
+	var maxL = oLock.clientWidth - oBtn.offsetWidth;
+	//预加载下第二张背景
+	var oBg = document.createElement("img");
+	oBg.src = "http://fgm.cc/iphone/2.jpg";
+	
+	
+	oBtn.onmousedown = function (e){
+		var e = e || window.event;
+		//disX = 鼠标点击点的x坐标-0
+		disX = e.clientX - this.offsetLeft;
+		//console.log(disX)
+		
+		document.onmousemove = function (e){
+			var e = e || window.event;
+			//btn要移动的距离
+			var l = e.clientX - disX;
+			//边界
+			l < 0 && (l = 0);
+			l > maxL && (l = maxL);
+			//图片位置的更新
+			oBtn.style.left = l + "px";
+			//btn到达边界时切换背景图片
+			oBtn.offsetLeft == maxL && (iPhone.style.background = "url("+ oBg.src +")", oLock.style.display = "none");
+			return false;
+		};
+		
+		document.onmouseup = function (){
+			document.onmousemove = null;
+			document.onmouseup = null;
+			oBtn.releaseCapture && oBtn.releaseCapture();
+			
+			oBtn.offsetLeft > maxL / 2 ?
+				startMove(maxL, function (){
+					iPhone.style.background = "url("+ oBg.src +")";
+					oLock.style.display = "none"
+				}) :
+				startMove(0)
+		};
+		this.setCapture && this.setCapture();
+		return false
+	};
+	
+	function startMove (iTarget, onEnd){
+		clearInterval(oBtn.timer);
+		oBtn.timer = setInterval(function (){
+			doMove(iTarget, onEnd)
+		}, 30)
+	}
+	function doMove (iTarget, onEnd){
+		var iSpeed = (iTarget - oBtn.offsetLeft) / 5;
+		iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+		iTarget == oBtn.offsetLeft ? (clearInterval(oBtn.timer), onEnd && onEnd()) : oBtn.style.left = iSpeed + oBtn.offsetLeft + "px"
+	}
+</script>

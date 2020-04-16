@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul, li{
+				list-style: none;
+			}
+			
+			/*menu样式*/
+			#menu{
+				position: absolute;	/*绝对定位*/
+				border: 1px solid orange;
+				border-radius: 3px;
+				width: 100px;
+			}
+			#menu li{
+				position: relative;	/*em的父元素li相对定位*/
+				height:24px;	/*与em图标的高度一致*/
+				padding-left:24px;	/*em图标的宽度*/
+				background:#eaead7;
+				/*上下、左右居中*/
+				vertical-align:top;
+				text-align: center;
+				/*字体*/
+				font: 14px/1.5 tahoma;
+			}
+			#menu li a{
+				height: 24px;	/*与em图标的高度一致*/
+				display: block;	/*块级元素的宽度才会继承，而行内元素的宽度为文字长度而已*/
+				color: #333;
+				background: #fff;
+				text-decoration:none;
+			}
+			
+			/*em图标*/
+			#menu li em{
+				position:absolute;	/*em绝对定位*/
+				top:0;
+				left:0;
+				width:24px;
+				height:24px;
+				background:url(ico.png) no-repeat;
+			}
+			#menu li em.copy{
+				background-position:0 -24px;
+			}
+			#menu li em.paste{
+				background-position:0 -48px;
+			}
+			#menu li em.cut{
+				background-position:0 0;
+			}
+			
+			/*鼠标经过时的背景色*/
+			#menu li.active{
+				background: #999;
+			}
+			#menu li.active a{
+				background: #999;
+			}
+		</style>
+	</head>
+	<body>
+		<center>自定义右键菜单</center>
+		<ul id="menu">
+			<li>
+				<em class="copy"></em>
+				<a href="javascript:;">复制</a>
+			</li>
+			<li>
+				<em class="paste"></em>
+				<a href="javascript:;">粘贴</a>
+			</li>
+			<li>
+				<em class="cut"></em>
+				<a href="javascript:;">剪切</a>
+			</li>
+		</ul>
+	</body>
+</html>
+<script>
+	var oMenu=document.getElementById("menu")
+	var oLis=oMenu.children;
+	
+	//隐藏自定义菜单
+	oMenu.style.display="none"
+
+	//自定义菜单
+	document.oncontextmenu=function(event){
+		var event=event||window.event;
+		oMenu.style.display="block"
+		oMenu.style.top=event.clientY+'px'
+		oMenu.style.left=event.clientX+'px'
+		return false;
+	}
+	
+	//页面点击后自定义菜单消失
+	document.onclick=function(){
+		oMenu.style.display="none"
+	}
+	
+	//鼠标移入菜单
+	for(var i=0; i<oLis.length; i++){
+		oLis[i].onmouseover=function(){
+			this.className="active"
+		}
+		oLis[i].onmouseout=function(){
+			this.className=""
+		}
+	}
+</script>

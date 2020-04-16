@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				color: #fff;
+			}
+			#box{
+				width: 200px;
+				height: 200px;
+				background-color: #000;
+				margin: 10px auto;
+				padding: 10px;
+				cursor: crosshair;
+			}
+			#box.mouseHover{
+				background-color: pink;
+			}
+			/*方法二：:hover*/
+			/*#box:hover{
+				background-color: pink;
+			}*/
+		</style>
+		<script>
+			//方法一：动态添加class
+			window.onload=function(){
+				var box=document.getElementById("box");
+				box.onmouseover=function(){
+					box.className="mouseHover"
+				}
+				box.onmouseout=function(){
+					box.className=""
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">鼠标移入改变样式，鼠标移出恢复样式。</div>
+	</body>
+</html>

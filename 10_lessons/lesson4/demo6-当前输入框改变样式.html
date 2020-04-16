@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			/*大盒子*/
+			#box{
+				width: 400px;
+				border: 2px solid #f60;
+				background: #fef4eb;
+				padding-bottom: 10px;
+				overflow: hidden;
+				margin: 10px auto;
+			}
+			
+			/*h2*/
+			#box h2{
+			    color: #fe791e;
+			    font-size: 16px;
+			    background: #ffebd7;
+			    border-bottom: 2px solid #f60;
+			    padding: 5px 10px;
+			}
+			
+			/*两个input*/
+			#box p{
+			    float: left;
+			    clear: both;
+			    width: 100%;
+			    height: 31px;
+			    margin-top: 10px;
+			    line-height: 31px;
+			}
+			#box label, #box input{
+				float: left;
+			}
+			#box label{
+				text-align: right;
+				width: 100px;
+				height: 31px;
+			}
+			#box .f-text{
+				width: 200px;
+				height: 31px;
+				line-height: 31px;
+				padding-left: 5px;	/*文字缩进5px*/
+			}
+			
+			/*橙色边框、粉红色背景颜色*/
+			#box .current{
+				outline: none;	/* 去掉input 获取焦点时的边框 */
+				border: 2px solid orange;
+				background-color: palegoldenrod;
+			}
+			
+			
+			/*登录*/
+			#box .f-btn{
+			    color: #fff;
+			    width: 104px;
+			    height: 31px;
+			    cursor: pointer;
+			    font-size: 16px;
+			    background: #f60;
+			    line-height: 31px;
+			    border-radius: 5px;
+			    margin-left: 48px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<h2>用户登录</h2>
+			<p>
+				<label>用户名：</label>
+				<input class="f-text" />
+			</p>
+			<p>
+				<label>密码：</label>
+			 	<input class="f-text" />
+			</p>
+			<p>
+				<label></label>
+			 	<input type="button" value="登录" class="f-btn" />
+			</p>
+		</div>
+	</body>
+</html>
+<script>
+	var box=document.getElementById("box")
+	var oInps=document.getElementsByTagName("input")
+	for(var i=0; i<oInps.length-1; i++){
+		oInps[i].onfocus=function(){
+			this.className="f-text current"
+		}
+		oInps[i].onblur=function(){
+			this.className="f-text"
+		}
+	}
+</script>

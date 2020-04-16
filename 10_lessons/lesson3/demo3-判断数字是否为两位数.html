@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+</head>
+<body style="text-align: center;">
+	<input type="text" name="txt" id="txt" value="" />
+	<input type="button" id="btn" value="是否为两位数" />
+	<script>
+		window.onload = function (){
+			var inp = document.getElementById("txt");
+			var btn = document.getElementById("btn");
+			btn.onclick = function(){
+				(inp.value == "") ?
+				alert("请输入数字") : 
+				alert(/^\d{2}$/.test(parseInt(inp.value)) ? "√ 是两位数" : "这是" + inp.value.length +"位数");
+			}
+			inp.value
+		}
+	</script>
+</body>
+</html>

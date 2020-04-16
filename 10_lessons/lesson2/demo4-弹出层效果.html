@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#container{
+				position: relative;
+				width: 900px;
+				height: 600px;
+				margin: 0 auto;
+			}
+			#btn{
+				display: block;
+				margin: 20px auto;
+			}
+			#box{
+				width: 300px;
+				height: 200px;
+				border: 2px solid #f90;
+				margin: 0 auto;
+				display: none;				
+				/*定位*/
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-top: -100px;
+				margin-left: -150px;
+			}
+			#close{
+				width: 20px;
+				height: 20px;
+				position: absolute;
+				top: 5px;
+				right: 5px;
+				/*X的位置*/
+				text-align: center;
+				font-size: 20px;
+				line-height: 20px;
+				/*文字*/
+				color: #fff;
+				cursor: pointer;
+			}
+			.header{
+				border: 1px solid orange;
+				height: 30px;
+				margin: 2px;
+				background-color: #fc0;
+			}
+			.content{
+				border: 1px solid orange;
+				height: 160px;
+				margin: 2px;
+				background-color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<button id="btn">弹出层</button>
+			<div id="box">
+				<div class="header">
+					<div id="close">×</div>
+				</div>
+				<div class="content"></div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	function $(id){return document.getElementById(id)}
+	$("btn").onclick=function(){
+		document.body.style.backgroundColor="#ccc"
+		$("box").style.display="block"
+	}
+	$("close").onclick=function(){
+		document.body.style.backgroundColor="#fff"
+		$("box").style.display="none"
+	}
+</script>

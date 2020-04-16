@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				width: 200px;
+				margin: 10px auto;
+			}
+			.box input{
+				margin-bottom: 10px;
+			}
+		</style>
+		<script>
+			var fun = function(a, b){
+				alert(a.value)
+				alert(b.value)
+			}
+			window.onload=function(){
+				var inps=document.getElementsByTagName("input")
+				var btn=document.getElementsByTagName("button")[0]
+				btn.onclick=function(){
+					fun(inps[0], inps[1])
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<input type="text" value="北京市" />
+			<br />
+			<input type="text" value="朝阳区" />
+			<br />
+			<button>传参</button>
+		</div>
+	</body>
+</html>

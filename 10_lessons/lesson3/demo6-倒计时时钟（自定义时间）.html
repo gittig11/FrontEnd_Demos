@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#timer{
+				margin: 10px auto;
+				width: 200px;
+				height: 300px;
+			}
+			input{
+				width: 40px;
+				text-align: center;
+				margin-right: 5px;
+			}
+			#btn{
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="timer">
+			<input type="text" value="1" />分
+			<input type="text" value="2" />秒
+			<br />
+			<button id="btn">开始</button>
+			<button id="btnStop">暂停</button>
+		</div>
+	</body>
+</html>
+<script>
+	var oInps=document.getElementsByTagName("input")
+	var btn=document.getElementById("btn")
+	var btnStop=document.getElementById("btnStop")
+	//clickOnce用于判断是否调用过定时器，定时器是不是在运行中
+	clickOnce=false;
+	
+	//开始定时器
+	function startTimer(){
+		//调用定时器时，赋值true
+		clickOnce=true;
+		
+		//使用自定义的秒数
+		let i=oInps[1].value;
+		//把定时器aTimer设置为全局变量
+		aTimer=setInterval(function(){
+			i--;
+			oInps[1].value=i;			
+			if(i==0){
+			//秒数减为0
+				if(oInps[0].value==0){
+				//分钟数为0
+					stopTimer();
+				}
+				else{
+				//分钟数不为0
+					i=60;
+					//这里赋值60，经过i--; 下一秒显示59.
+				}
+			}
+			if(i==59){
+				oInps[0].value-=1;
+			}
+		}, 1000)
+	}
+	//暂停定时器
+	//每次获取input的value值，所以能实现暂停功能。
+	function stopTimer(){
+		clearInterval(aTimer);
+		clickOnce=false;
+	}
+	
+	
+	btn.onclick=function(){
+		//调用过定时器，先清除定时器，再开始新的定时器。避免了多个定时器之间互相干扰。
+		if(clickOnce){
+			stopTimer();
+			startTimer();
+		}
+		//未调用过定时器
+		else{
+			startTimer();
+		}
+	}
+	btnStop.onclick=function(){
+		stopTimer();
+	}
+</script>

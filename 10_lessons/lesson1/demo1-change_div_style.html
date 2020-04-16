@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.container{
+				margin: 0 auto;
+				width: 500px;
+				text-align: center;
+			}
+			#box{
+				width: 100px;
+				height: 100px;
+				background-color: #000;
+				margin: 10px auto;
+			}
+			button{
+				margin: 5px 0 0 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<button id="btn1">变宽</button>
+			<button id="btn2">变高</button>
+			<button id="btn3">变色</button>
+			<button id="btn4">隐藏</button>
+			<button id="btn5">重置</button>
+			<div id="box"></div>
+		</div>
+	</body>
+</html>
+<script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	var changeStyle = function (elem, attr, value){
+		elem.style[attr] = value
+	};
+	var oAtt = ["width", "height", "background-color", "display","display"]
+	var oVal = ["200px","200px","red","none","block"];
+	var oBtns=document.getElementsByTagName("button");
+	for(let i=0; i<oBtns.length; i++){
+		oBtns[i].index = i;
+		oBtns[i].onclick = function(){
+			this.index == oBtns.length - 1 && ($("box").style.cssText = "");	//如果是最后一个按钮，把cssText清空
+			changeStyle($("box"), oAtt[this.index], oVal[this.index])
+		}
+	}
+</script>

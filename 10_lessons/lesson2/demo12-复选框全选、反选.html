@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			dl{
+				width: 120px;
+				margin: 10px auto;
+				border: 1px solid;
+				padding: 5px 0;
+			}
+			dl dt{
+				border-bottom: 1px solid;
+				position: relative;
+				padding-left: 5px;
+			}
+			dl dd p{
+				margin-top: 10px;
+				padding-left: 5px;
+			}
+			#antiSelect{
+				position: absolute;
+				right: 5px;
+			}
+		</style>
+		<script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.24.6'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+	</head>
+	<body>
+		<dl>
+			<dt>
+				<input type="checkbox" name="" id="" value="" />
+				<label>全选</label>
+				<label><a href="javascript:;" id="antiSelect">反选</a></label>
+			</dt>
+			<dd>
+				<p><input type="checkbox" /><label for="">1</label></p>
+				<p><input type="checkbox" /><label for="">2</label></p>
+				<p><input type="checkbox" /><label for="">3</label></p>
+				<p><input type="checkbox" /><label for="">4</label></p>
+				<p><input type="checkbox" /><label for="">5</label></p>
+			</dd>
+		</dl>
+		<center>1、切换全选/全不选文字；2、根据选中个数更新全选框状态；</center>
+	</body>
+</html>
+<script>
+	function $(id){return document.getElementById(id)}
+	oInputs=document.getElementsByTagName("input")
+	oLabel=document.getElementsByTagName("label")[0]
+	
+	//全选 全不选
+	oInputs[0].onclick=function(){
+		for(let i=1; i<oInputs.length; i++){
+			oInputs[i].checked=this.checked;
+			//等号后面（this.checked）是true或false 
+			//this表示oInputs[0]
+		}
+		isCheckAll();
+	}
+	//反选
+	$("antiSelect").onclick=function(){
+		for(let i=1; i<oInputs.length; i++){
+			oInputs[i].checked=!oInputs[i].checked;
+		}
+		isCheckAll();
+	}
+	
+	//判断是否全部选择
+	var isCheckAll=function(){
+		for(var i=1, n=0; i<oInputs.length; i++){
+			oInputs[i].checked && n++;
+			//计算勾选的个数
+		}
+		oInputs[0].checked = n == oInputs.length - 1;
+		//判断
+		oLabel.innerHTML=oInputs[0].checked?"全不选":"全选";
+		//显示全选或全不选
+	}
+	
+	//除了第一个复选框，根据复选框的个数来判断是否全选
+	for(let i=1; i<oInputs.length; i++){
+		oInputs[i].onclick=function(){
+			isCheckAll();
+		}
+	}
+	
+</script>

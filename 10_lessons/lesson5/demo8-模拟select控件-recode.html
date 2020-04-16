@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+				color: #000;
+			}
+			
+			body{
+				background: #23384e;
+				font: 14px/1.5 tahoma;
+			}
+			#search{
+				/*父元素相对定位*/
+				position: relative;
+				margin: 10px auto;
+				/*border: 1px solid #fff;*/
+				width: 350px;
+				height: 34px;
+				/*宽度没有350px，选择repeat-x*/
+				background: url(img/search.jpg) repeat-x;
+				/*背景图片*/
+				background-position: 0 -34px;
+			}
+			
+			/*下拉菜单*/
+			#search .select{
+				float: left;
+				color: #fff;
+				/*width+padding-left=200px*/
+				width: 190px;
+				padding-left: 10px;
+				/*高度、行高均为22px*/
+				height: 22px;
+				line-height: 22px;
+				/*4px*/
+				margin-top: 4px;
+				margin-left: 40px;
+				cursor: pointer;
+				/*背景*/
+				background: url(img/search.jpg) no-repeat;
+				background-position: 0 -68px;
+			}
+			
+			/*搜索图标*/
+			#search form em{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 40px;
+				height: 34px;
+				overflow: hidden;
+				background-position: 0 0;
+				background: url(img/search.jpg) no-repeat;
+			}
+			
+			/*搜索按钮*/
+			#search a {
+			    float: left;
+			    width: 80px;
+			    height: 24px;
+			    color: #000;
+			    letter-spacing: 4px;
+			    line-height: 22px;
+			    text-align: center;
+			    text-decoration: none;
+			    margin: 4px 0 0 10px;
+			    background: url(img/search.jpg) no-repeat;
+			    background-position: 0 -90px;
+			}
+			
+			#search .sub{
+				position: absolute;
+				/*top也就是height: 22px; + margin-top: 4px;*/
+				top: 26px;
+				left: 40px;
+				color: #fff;
+				width: 198px;
+				background: #2b2b2b;
+				border: 1px solid;
+				display: none;
+			}
+			#search .sub li{
+				height: 25px;
+				line-height: 25px;
+				padding-left: 10px;
+				margin-bottom: -1px;
+				border-bottom: 1px dotted #fff;
+			}
+			
+			.hover{
+				background: #999;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="search">
+			<div class="box">
+				<!--为什么用form表单-->
+				<form>
+					<em></em>
+					<span class="select">请选择游戏名称</span>
+					<a href="javascript:;">搜索</a>
+				</form>
+			</div>
+			
+			<!--ul, li列表组成下拉菜单-->
+			<ul class="sub">
+				<li>地下城与勇士</li>
+				<li>魔兽世界（国服）</li>
+				<li>热血江湖</li>
+				<li>神鬼传奇</li>
+				<li>大话西游II</li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script>
+	var oSelect=document.getElementsByTagName("span")[0]
+	var oSub=document.getElementsByTagName("ul")[0]
+	var oLis=document.getElementsByTagName("li")
+	oSelect.onclick=function(){
+		oSub.style.display = oSub.style.display=="block"?"none":"block";
+		//阻止事件冒泡
+		(event || window.event).cancelBubble = true
+	}
+	
+	for(var i=0; i<oLis.length; i++){
+		oLis[i].onmouseover=function(){
+			this.className="hover"
+		}
+		oLis[i].onmouseout=function(){
+			this.className=""
+		}
+		oLis[i].onclick=function(){
+			oSelect.innerHTML=this.innerHTML
+		}
+	}
+	
+	document.onclick=function(){
+		oSub.style.display="none"
+	}
+</script>

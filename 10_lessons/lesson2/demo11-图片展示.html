@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+			}
+			body{
+				background: #000;
+			}
+			
+			#box{
+				background-color: #fff;
+				margin: 20px auto;
+				padding: 5px 5px 8px 8px;
+				width: 212px;
+				height: 265px;
+				border-radius: 8px;
+			}
+			#box li img{
+				float: left;
+				width: 50px;
+				height: 50px;
+				/*上、右各3px*/
+				margin: 3px 3px 0 0;
+			}
+			#box li.first img{
+				width: 156px;
+				height: 156px;
+			}
+			
+			/*
+			 * 156+50+3*2(margin)=212px.
+			 * width: 212px;
+			 * #box padding: 5px 5px 8px 8px;
+			 * 
+			 * 156+50*2+3*3(margin)=265px. 
+			 * height: 265px;
+			 * #box padding: 5px 5px 8px 8px;
+			 */
+		</style>
+		<script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.24.6'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+
+	</head>
+	<body>
+		<ul id="box">
+			<!--li>img-->
+			<!--li*11>a>img-->
+			<li class="first">
+				<img src="img/img_big_1.jpg" alt="" />
+			</li>
+			<li><a href="javascript:;"><img src="img/img_small_1.jpg" alt="" /></a></li>
+			<li><a href="javascript:;"><img src="img/img_small_2.jpg" alt="" /></a></li>
+			<li><a href="javascript:;"><img src="img/img_small_3.jpg" alt="" /></a></li>
+			<li><a href="javascript:;"><img src="img/img_small_4.jpg" alt="" /></a></li>
+			<li><a href="javascript:;"><img src="img/img_small_5.jpg" alt="" /></a></li>
+			<li><a href="javascript:;"><img src="img/img_small_6.jpg" alt="" /></a></li>
+			<li><a href="javascript:;"><img src="img/img_small_7.jpg" alt="" /></a></li>
+			<li><a href="javascript:;"><img src="img/img_small_8.jpg" alt="" /></a></li>
+			<li><a href="javascript:;"><img src="img/img_small_9.jpg" alt="" /></a></li>
+			<li><a href="javascript:;"><img src="img/img_small_10.jpg" alt="" /></a></li>
+			<li><a href="javascript:;"><img src="img/img_small_11.jpg" alt="" /></a></li>
+		</ul>
+	</body>
+</html>
+<script>
+	var oImgs=document.getElementsByTagName("img")
+	var oLis=document.getElementsByTagName("li")
+	for(let i=1; i<oLis.length; i++){
+		oImgs[i].onmouseover=function(){
+			oImgs[0].src="img/img_big_"+i+".jpg";
+		}
+	}
+</script>

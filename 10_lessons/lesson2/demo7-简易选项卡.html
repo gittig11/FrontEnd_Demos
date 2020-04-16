@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.clearfix:before, .clearfix:after{
+				content: "";
+				display: table;
+			}
+			.clearfix:after{
+				clear: both;
+			}
+			.clearfix{
+				*zoom: 1;
+			}
+			
+			
+			.wrap{
+				width: 300px;
+				margin: 10px auto;
+			}
+			
+			#tab{
+				width: 300px;
+				height: 30px;
+				line-height: 30px;
+				background-color: #000;
+				border: 1px solid;
+			}
+			#tab ul li{
+				width: 100px;
+				float: left;
+				color: #fff;
+				list-style: none;
+				text-align: center;
+				/*字体大小/行高*/
+				font: 14px/30px "微软雅黑";
+			}
+			#tab li.current{
+				color: #000;
+				background-color: #ccc;
+			}
+			
+			#content{
+				width: 300px;
+				height: 150px;
+				border: 1px solid;
+				margin-top: -1px;	/*去掉重叠的1px边框*/
+			}
+			#content ul{
+				display: none;
+				float: left;
+				padding-left: 25px;
+			}
+			#content ul li{
+				line-height: 20px;
+				margin-top: 5px;
+			}
+		</style>
+		<script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.24.6'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div id="tab">
+				<ul>
+					<li class="current">第一课</li>
+					<li>第二课</li>
+					<li>第三课</li>
+				</ul>
+			</div>
+			<div id="content" class="clearfix">
+				<ul style="display: block;">
+					<li>Item 1</li>
+					<li>Item 2</li>
+					<li>Item 3</li>
+					<li>Item 4</li>
+					<li>Item 5</li>
+				</ul>
+				<ul>
+					<li>Item 01</li>
+					<li>Item 02</li>
+					<li>Item 03</li>
+					<li>Item 04</li>
+					<li>Item 05</li>
+				</ul>
+				<ul>
+					<li>Item 001</li>
+					<li>Item 002</li>
+					<li>Item 003</li>
+					<li>Item 004</li>
+					<li>Item 005</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	function $(id){return document.getElementById(id)}
+	
+	var oUls= $("content").getElementsByTagName("ul")
+	
+	
+	//mouseover
+	var oLis= $("tab").getElementsByTagName("li")
+	for(let i=0; i<oLis.length; i++){
+		//使用let
+		//用index传递参数i
+		let index = i;
+		oLis[i].onmouseover=function(){
+			for(let i=0; i<oLis.length; i++){oLis[i].className=""};
+			this.className="current";
+			
+			for(let i=0; i<oLis.length; i++){oUls[i].style.display="none";}
+			oUls[index].style.display="block";
+		}		
+	}
+</script>

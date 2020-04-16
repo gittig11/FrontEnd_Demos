@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			a:link, a:visited {
+			    color: #FFF;
+			    text-decoration: none;
+			}
+			#container{
+				width: 350px;
+				/*height: 600px;*/
+				border: 12px solid #eee;
+				border-radius: 10px;
+				margin: 10px auto 0;
+				padding: 5px;
+				/*background-color: pink;*/
+			}
+			dl{
+				height: 31px;
+				color: #fff;
+				/*隐藏溢出*/
+				overflow: hidden;
+				transition: height 0.5s ease-in-out;
+			}
+			dt, dd {
+			    padding-left: 15px;
+			    border-bottom: 1px solid #FFF;
+			}
+			dt {
+			    cursor: pointer;
+			    font-size: 14px;
+			    background: #9C0;
+			    line-height: 30px;
+			    font: 700 14px/30px Tahoma;
+			    transition: background-color 0.5s ease-in;	/*背景色的过渡效果*/
+			}
+			dd {
+			    background: #7CF;
+			    line-height: 25px;
+			    font: 12px/25px Tahoma;
+			}
+			.current{
+				background-color: #09F;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container"></div>
+		<script>
+			function $(id){
+				return document.getElementById(id);
+			}
+			var lessonsArr = [
+			    {
+			        project: [{
+			            text: "第一课"
+			        },
+			        {
+			            text: "控制Div属性",
+			            href: "lesson1/demo1-change_div_style.html"
+			        },
+			        {
+			            text: "网页换肤",
+			            href: "lesson1/demo2-change_bgc.html"
+			        },
+			        {
+			            text: "函数接收参数并弹出",
+			            href: "lesson1/demo3-function_params.html"
+			        },
+			        {
+			            text: "用循环将三个Div变成红色",
+			            href: "lesson1/demo4-for_cycle_change_bgc.html"
+			        },
+			        {
+			            text: "鼠标移入/移出改变样式",
+			            href: "lesson1/demo5-mouseover.html"
+			        },
+			        {
+			            text: "记住密码提示框",
+			            href: "lesson1/demo6-password_tips.html"
+			        }]
+			    },
+			    {
+			        project: [{
+			            text: "第二课"
+			        },
+			        {
+			            text: "下拉菜单",
+			            href: "lesson2/demo1-下拉菜单.html"
+			        },
+			        {
+			            text: "点击Div，显示其innerHTML",
+			            href: "lesson2/demo2_show_div_innerHTML.html"
+			        },
+			        {
+			            text: "求出数组中所有数字的和",
+			            href: "lesson2/demo3-对输入的数组求和.html"
+			        },
+			        {
+			            text: "弹出层效果",
+			            href: "lesson2/demo4-弹出层效果.html"
+			        },
+			        {
+			            text: "函数传参，改变Div任意属性的值",
+			            href: "lesson2/demo5-div属性设置.html"
+			        },
+			        {
+			            text: "播放列表收缩展开",
+			            href: "lesson2/demo6-播放列表收缩展开.html"
+			        },
+			        {
+			            text: "简易选项卡",
+			            href: "lesson2/demo7-简易选项卡.html"
+			        },
+			        {
+			            text: "简易JS年历",
+			            href: "lesson2/demo8-简易JS年历.html"
+			        },
+			        {
+			            text: "图片列表：鼠标移入/移出改变图片透明度",
+			            href: "lesson2/demo9-改变div透明度.html"
+			        },
+			        {
+			            text: "提示框效果：鼠标经过时显示图片",
+			            href: "lesson2/demo10-鼠标经过时显示图片.html"
+			        },
+			        {
+			            text: "鼠标移过，修改图片路径",
+			            href: "lesson2/demo11-图片展示.html"
+			        },
+			        {
+			            text: "复选框（checkbox）全选/全不选/返选",
+			            href: "lesson2/demo12-复选框全选、反选.html"
+			        }]
+			    },
+			    {
+			        project: [{
+			            text: "第三课"
+			        },
+			        {
+			            text: "用typeof查看数据类型",
+			            href: "lesson3/demo1-用typeof查看数据类型.html"
+			        },
+			        {
+			            text: "页面加载后累加，自加1",
+			            href: "lesson3/demo2-页面加载后累加，自加1.html"
+			        },
+			        {
+			            text: "判断数字是否为两位数",
+			            href: "lesson3/demo3-判断数字是否为两位数.html"
+			        },
+			        {
+			            text: "网页计算器",
+			            href: "lesson3/demo4-网页计算器.html"
+			        },
+			        {
+			            text: "简易网页时钟",
+			            href: "lesson3/demo5-网页时钟.html"
+			        },
+			        {
+			            text: "倒计时时钟",
+			            href: "lesson3/demo6-倒计时时钟（自定义时间）.html"
+			        }]
+			    },
+			    {
+			        project: [{
+			            text: "第四课"
+			        },
+			        {
+			            text: "nav_雪碧图_setTimeout",
+			            href: "lesson4/demo1-nav_雪碧图_setTimeout.html"
+			        },
+			        {
+			            text: "自动播放一幻灯片效果",
+			            href: "lesson4/demo2-自动播放一幻灯片效果.html"
+			        },
+			        {
+			            text: "自动改变方向一幻灯片效果",
+			            href: "lesson4/demo3-自动改变方向一幻灯片效果.html"
+			        },
+			        {
+			            text: "agruments应用一求出函数参数的总合",
+			            href: "lesson4/demo4-arguments对象.html"
+			        },
+			        {
+			            text: "css函数一设置/读取对象的属性",
+			            href: "lesson4/demo5-CSS函数(设置样式、获取样式).html"
+			        },
+			        {
+			            text: "当前输入框高亮显示",
+			            href: "lesson4/demo6-当前输入框改变样式.html"
+			        },
+			        {
+			            text: "事件练习：封装兼容性添加、删除事件的函数",
+			            href: "lesson4/demo7-事件练习：封装兼容性添加、删除事件的函数.html"
+			        },
+			        {
+			            text: "星级评分系统",
+			            href: "lesson4/demo8-星级评分系统.html"
+			        }]
+			    },
+			    {
+			        project: [{
+			            text: "第五课"
+			        },
+			        {
+			            text: "div闪烁",
+			            href: "lesson5/demo1-div闪烁.html"
+			        },
+			        {
+			            text: "点击页面，显示单击的坐标",
+			            href: "lesson5/demo2-显示单击的坐标.html"
+			        },
+			        {
+			            text: "用户按下键盘，显示keyCode",
+			            href: "lesson5/demo3-用户按下键盘，显示keyCode.html"
+			        },
+			        {
+			            text: "阻止右键菜单（阻止默认事件）",
+			            href: "lesson5/demo4-阻止右键菜单.html"
+			        },
+			        {
+			            text: "自定义右键菜单",
+			            href: "lesson5/demo5-自定义右键菜单.html"
+			        },
+			        {
+			            text: "用键盘控制Div",
+			            href: "lesson5/demo6-用键盘控制div.html"
+			        },
+			        {
+			            text: "跟随鼠标移动（大图展示）",
+			            href: "lesson5/demo7-跟随鼠标移动（大图展示）.html"
+			        },
+			        {
+			            text: "模拟select控件",
+			            href: "lesson5/demo8-模拟select控件.html"
+			        }]
+			    },
+			    {
+			        project: [{
+			            text: "第六课"
+			        },
+			        {
+			            text: "完美拖拽",
+			            href: "lesson6/demo1-完美拖拽.html"
+			        },
+			        {
+			            text: "自定义多级右键菜单",
+			            href: "lesson6/demo2-自定义多级右键菜单.html"
+			        },
+			        {
+			            text: "仿腾讯微博效果",
+			            href: "lesson6/demo3-仿腾讯微博效果.html"
+			        }]
+			    },
+			    {
+			        project: [
+							{
+			            text: "第七课"
+			        },
+			        {
+			            text: "移动效果（按轨迹移动）",
+			            href: "lesson7/demo1-移动效果（按轨迹移动）.html"
+			        },
+			        {
+			            text: "自动轮播广告（缓冲效果）",
+			            href: "lesson7/demo2-自动轮播广告（缓冲效果）.html"
+			        },
+			        {
+			            text: "图片切换（Loading效果）",
+			            href: "lesson7/demo3-图片切换（Loading效果）.html"
+			        },]
+			    },
+			    {
+			        project: [{
+			            text: "第八课"
+			        },
+			        {
+			            text: "iPhone手机解锁效果",
+			            href: "lesson8/demo1-iPhone手机解锁效果.html"
+			        },
+			        {
+			            text: "自定义滚动条",
+			            href: "lesson8/demo2/demo2-自定义滚动条.html"
+			        },
+			        {
+			            text: "拖拽一Clone",
+			            href: "lesson8/demo3-拖拽一Clone.html"
+			        },
+			        {
+			            text: "拖拽并可以改变大小",
+			            href: "lesson8/demo4-拖拽并可以改变大小.html"
+			        }]
+			    },
+			    {
+			        project: [{
+			            text: "第九课"
+			        },
+			        {
+			            text: "仿苹果电脑任务栏菜单",
+			            href: "lesson9/demo1-仿苹果电脑任务栏菜单.html"
+			        },
+			        {
+			            text: "拼图小游戏",
+			            href: "lesson9/demo2/demo2-拼图小游戏.html"
+			        },
+			        {
+			            text: "模拟表单控件",
+			            href: "lesson9/demo3/demo3-模拟表单控件.html"
+			        }]
+			    },
+			    {
+			        project: [{
+			            text: "第十课"
+			        },
+			        {
+			            text: "为数组添加方法（求和，最大值）",
+			            href: "lesson10/demo1-数组添加方法-求和、最大值.html"
+			        },
+			        {
+			            text: "自动轮播广告（面向对象版）",
+			            href: "lesson10/demo2-自动轮播广告（面向对象版）.html"
+			        },
+			        {
+			            text: "运动框架（面向对象版）",
+			            href: "lesson10/demo3-运动框架（面向对象版）.html"
+			        },
+			        {
+			            text: "照片墙一多实例演示（面向对象版）",
+			            href: "lesson10/demo4-照片墙一多实例演示（面向对象版）.html"
+			        },
+			        {
+			            text: "拖拽库（面向对象版）",
+			            href: "lesson10/demo5-拖拽库.html"
+			        },
+			        {
+			            text: "无缝滚动（面向对象版）",
+			            href: "lesson10/demo6-无缝滚动（面向对象版）.html"
+			        },
+			        {
+			            text: "延时加载（面向对象版）",
+			            href: "lesson10/demo7-延时加载.html"
+			        },
+			        {
+			            text: "仿腾讯游戏《英雄杀》官网Flash效果",
+			            href: "lesson10/demo8-仿腾讯游戏《英雄杀》官网Flash效果.html"
+			        },
+			        {
+			            text: "百度有啊通栏展示效果",
+			            href: "lesson10/demo9-百度有啊通栏展示效果.html"
+			        },
+			        {
+			            text: "放烟花效果（面向对象版）",
+			            href: "lesson10/demo10-放烟花效果（面向对象版）.html"
+			        },
+			        {
+			            text: "《穿越火线》官网导航菜单",
+			            href: "lesson10/demo11-《穿越火线》官网导航菜单.html"
+			        },
+			        {
+			            text: "《百度风云榜》TAB切换",
+			            href: "lesson10/demo12-《百度风云榜》TAB切换.html"
+			        },
+			        {
+			            text: "IBM官网导航条效果",
+			            href: "lesson10/demo13-IBM官网导航条效果.html"
+			        },
+			        {
+			            text: "面试题-动态生成表格",
+			            href: "lesson10/demo14-面试题-动态生成表格.html"
+			        }]
+			    },
+			    {
+			        project: [{
+			            text: "项目实例"
+			        },
+			        {
+			            text: "眼镜在线试戴",
+			            href: "lesson11/1-眼镜在线试戴/demo.html"
+			        },
+			        {
+			            text: "日历组件",
+			            href: "lesson11/2-日历组件/index.html"
+			        },
+			        {
+			            text: "淘宝网-迷你登录",
+			            href: "lesson11/3-淘宝网-迷你登录/index.html"
+			        },
+			        {
+			            text: "仿Google+ 游戏频道焦点图效果",
+			            href: "lesson11/4-仿Google+ 游戏频道焦点图效果/index.html"
+			        }]
+			    },
+			    {
+			        project: [{
+			            text: "YUI实例"
+			        },
+			        {
+			            text: "淘宝旅行通用日历组件",
+			            href: "lesson12/demo1-淘宝旅行通用日历组件.html"
+			        },
+			        {
+			            text: "酒店价格日历",
+			            href: "lesson12/demo2-酒店价格日历.html"
+			        }]
+			    },
+			    {
+			        project: [{
+			            text: "KISSY实例"
+			        },
+			        {
+			            text: "KISSY版-酒店价格日历",
+			            href: "calendar/hotel-price-calendar"
+			        },
+			        {
+			            text: "KISSY版-图片浏览组件",
+			            href: "lightbox"
+			        },
+			        {
+			            text: "酒店地图交通与周边",
+			            href: "rich-map"
+			        },
+			        {
+			            text: "多SKU酒店价格中心",
+			            href: "price-center/hotel"
+			        },
+			        {
+			            text: "多SKU门票价格中心",
+			            href: "price-center/ticket"
+			        },
+			        {
+			            text: "新版-多SKU门票价格中心",
+			            href: "price-center/newticket"
+			        }]
+			    }
+			]
+
+			//设置dt
+			for(let i=0; i<lessonsArr.length; i++){
+				var dl = document.createElement("dl");
+				var dt = document.createElement("dt");
+				var lessonLen = lessonsArr[i].project.length - 1;
+				dt.innerText = lessonsArr[i].project[0].text + ' (' + lessonLen + ')';
+				dl.appendChild(dt);
+				dl.id = "dl"+i;
+				dl.style.height = "31px";
+				$("container").appendChild(dl);
+			}
+			
+			//设置dd
+			for(let i=0; i<lessonsArr.length; i++){
+				for(let j=1; j<lessonsArr[i].project.length; j++){	//j>=1,排除dt
+//					console.log(lessonsArr[i].project[j].text)
+					var a = document.createElement("a");
+					a.innerText = j + ') ' + lessonsArr[i].project[j].text;
+					a.href = lessonsArr[i].project[j].href;
+					a.target = "_blank";
+					var dd = document.createElement("dd");
+					dd.appendChild(a);
+					$("container").children[i].appendChild(dd);
+				}
+			}
+
+			
+			
+			var EventUtil = {
+				addHandler: function(element, type, handler){
+					if(element.addEventListener){
+						element.addEventListener(type, handler, false);
+					}
+					else if(element.attachEvent){
+						element.attachEvent("on"+type, handler)
+					}
+					else{
+						element["on"+type] = handler;
+					}
+				},
+				getEvent: function(event){
+					return event ? event : window.event;
+				},
+				getTarget: function(event){
+					return event.target || event.srcElement;
+				}
+			}
+			
+			//事件委托
+			EventUtil.addHandler($("container"), "click", function(event){
+				event = EventUtil.getEvent(event);
+				var target = EventUtil.getTarget(event);
+//				console.log(target);	//dt
+//				console.log(target.tagName);	//DT or DD or A
+//				console.log(target.parentNode);
+//				console.log(target.parentNode.id);
+//				target.parentNode.style.height = "187px";
+				
+				if(target.tagName === "DT"){	//点击dt才有toggle效果以及改变dt背景色，点击dd或者a标签不会
+					//dt的背景色的过渡效果
+					target.classList.length === 0 ? target.classList.add("current") : target.classList.remove("current");
+					
+					//toggle
+					var totalHeight = 31 + 26*(target.parentNode.children.length - 1);
+					if(target.parentNode.style.height === '31px'){
+						target.parentNode.style.height = totalHeight + 'px';
+					}
+					else{
+						if(target.parentNode.id){	//只对dt起作用，不对a标签起作用
+							target.parentNode.style.height = '31px';
+						}
+					}
+					
+					//dl高度和dt颜色的复原
+					var dls = document.querySelectorAll("dl");
+					for(let i=0; i<dls.length; i++){
+						if(target.parentNode !== dls[i]){
+							dls[i].style.height = '31px';
+							dls[i].children[0].classList.remove("current")
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

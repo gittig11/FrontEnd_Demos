@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#imgList{
+				border: 1px solid;
+				width: 700px;	/* (10+128)*5+border1*10 */
+				height: 280px;	/* (10+128)*2+border1*4 */
+				padding: 0 10px 10px 0;
+				margin: 10px auto;	/*居中*/
+			}
+			#imgList li{
+				list-style: none;
+			}
+			#imgList li img{
+				width: 128px;
+				height: 128px;
+				float: left;
+				border: 1px solid;
+				margin: 10px 0 0 10px;
+				
+				opacity: 0.3;
+				filter: Alpha(opacity=30);
+			}
+			#imgList li.current img{
+				opacity: 1;
+				filter: Alpha(opacity=100);	/* <=IE8 */
+			}
+		</style>
+		<script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.24.6'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+	</head>
+	<body>
+		<!--ul#imgList>li*10>img-->
+		<ul id="imgList">
+			<li><img src="车标/1.jpg" alt="" /></li>
+			<li><img src="车标/2.jpg" alt="" /></li>
+			<li><img src="车标/3.jpg" alt="" /></li>
+			<li><img src="车标/4.jpg" alt="" /></li>
+			<li><img src="车标/5.jpg" alt="" /></li>
+			<li><img src="车标/6.jpg" alt="" /></li>
+			<li><img src="车标/7.jpg" alt="" /></li>
+			<li><img src="车标/8.jpg" alt="" /></li>
+			<li><img src="车标/9.jpg" alt="" /></li>
+			<li><img src="车标/10.jpg" alt="" /></li>
+		</ul>
+	</body>
+</html>
+<script>
+	var oLis=document.getElementsByTagName("li")
+	for(let i=0; i<oLis.length; i++){
+		oLis[i].onmouseover=function(){
+			this.className="current"
+		}
+		oLis[i].onmouseout=function(){
+			this.className=""
+		}
+	}
+</script>

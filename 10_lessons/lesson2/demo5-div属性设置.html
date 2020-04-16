@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.container{
+				width: 300px;
+				height: 100px;
+				margin: 10px auto;
+			}
+			#box{
+				background: #000;
+				width: 150px;
+				height: 150px;
+				margin: 10px auto;
+				padding: 10px;
+				color: #fff;
+			}
+			input, button{
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			属性名：<input type="text" value="background" /><br />
+			属性值：<input type="text" value="blue" /><br />
+			<button id="btnSure">确定</button>
+			<button id="btnReset">重置</button>
+		</div>
+		<div id="box">在上方输入框输入"属性名"及"属性值"，点击确定按钮查看效果。</div>
+	</body>
+</html>
+<script>
+	function $(id){return document.getElementById(id)}
+	var oInps= document.getElementsByTagName("input")
+	//定义函数
+	var changeStyle=function(elem, name, value){
+		elem.style[name]=value;
+	}
+	//js代码
+	$("btnSure").onclick=function(){
+		changeStyle($("box"), oInps[0].value, oInps[1].value)
+	}
+	$("btnReset").onclick=function(){
+		$("box").removeAttribute("style")
+	}
+</script>

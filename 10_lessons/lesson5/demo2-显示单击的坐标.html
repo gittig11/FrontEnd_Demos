@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			pre{color:green;padding:10px 15px;background:#f0f0f0;border:1px dotted #333;font:12px/1.5 Courier New;}
+			span{color:#999;}
+		</style>
+	</head>
+	<body>
+		<pre>
+&lt;script type="text/javascript"&gt;
+    var event = event || window.event;
+    alert("坐标：[" + event.clientX + ", " + event.clientY + "]")
+&lt;/script&gt; </pre>
+	</body>
+</html>
+<script>
+	//event代表事件的状态，例如触发event对象的元素、鼠标的位置及状态、按下的键等
+	//在IE/Opera/Safari/Chrome中是window.event，在Firefox中是event
+	document.onclick=function(event){
+		var event= event || window.event;
+		alert("坐标：["+ event.clientX + "," + event.clientY + "]")
+	}
+</script>

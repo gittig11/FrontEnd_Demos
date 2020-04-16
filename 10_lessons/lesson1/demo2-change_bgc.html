@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+			}
+			body{
+				background-color: #A3C5A8;
+			}
+			.container{
+				width: 500px;
+				margin: 0 auto;
+			}
+			
+			/*父元素触发BFC，闭合浮动*/
+			#skin{
+			    overflow: hidden;
+			    zoom: 1; /*ie6*/
+			}
+			#skin li{
+				width: 6px;
+				height: 6px;
+				border-width: 4px;
+				border-style: solid;
+				float: left;
+				margin: 5px 10px 0 0;
+			}
+			/*白色bgc、不同border*/
+			#skin li.current {
+				background: #fff!important;
+			}
+			
+			#red{
+				border-color: red;
+				background-color: red;
+			}
+			#green{
+				border-color: green;
+				background-color: green;
+			}
+			#dark{
+				border-color: #000;
+				background-color: #000;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<ul id="skin">
+				<li id="red" title="red"></li>
+				<li id="green" class="current"></li>
+				<li id="dark"></li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script>
+window.onload=function(){
+	function $(id){return document.getElementById(id)}
+	var oSkin=$("skin").getElementsByTagName("li");
+	for(let i=0; i<oSkin.length; i++){
+		oSkin[i].onclick= function(){
+			let arrColor=["pink","#A3C5A8","#ccc"];
+			//change li's bgc
+			for(var p in oSkin){
+				oSkin[p].className="";
+			}
+			this.className="current";
+			//change body's bgc
+			document.body.style.backgroundColor=arrColor[i];
+		}
+	}
+}
+</script>

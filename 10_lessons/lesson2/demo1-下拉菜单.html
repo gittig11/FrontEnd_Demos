@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				font: 12px/24px "微软雅黑";
+			}
+			.box{
+				width: 60px;
+				margin: 10px auto;
+			}
+			#myUl{
+				border: 1px solid #0000FF;
+				margin-top: 5px;
+				display: none;
+			}
+			#myUl li{
+				list-style: none;
+				line-height: 24px;
+				text-align: center;
+			}
+			#myUl li a{
+				text-decoration: none;
+				padding: 0 5px;
+				display: block;	/*以块级元素显示，才能设置宽高*/
+			}
+			#myUl li a:hover{
+				background:#d9e1f6;
+			}
+			#btn{
+				cursor: pointer;
+				width: 60px;
+				height: 25px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<button id="btn">输入法</button>
+			<ul id="myUl">
+				<li><a href="javascript:;">手写</a></li>
+				<li><a href="javascript:;">拼音</a></li>
+				<hr />
+				<li id="close"><a href="javascript:;">关闭</a></li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script>
+	function $(id){return document.getElementById(id)}
+	$("close").onclick=function(){
+		$("myUl").style.display="none";
+	}
+	$("btn").onclick=function(){
+		$("myUl").style.display= $("myUl").style.display=="block"?"none":"block";
+	}
+</script>

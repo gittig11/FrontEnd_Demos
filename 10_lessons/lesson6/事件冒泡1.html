@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id='div' onclick='alert("div");'>
+		<ul onclick='alert("ul");'>
+			<li onclick='alert("li");'>test</li>
+			<p>单击test时，会依次触发alert(“li”),alert(“ul”),alert(“div”)，这就是事件冒泡。</p>
+			<p>
+				阻止冒泡
+				window.event? window.event.cancelBubble = true : e.stopPropagation();
+			</p>
+		</ul>
+		</div>		
+	</body>
+</html>

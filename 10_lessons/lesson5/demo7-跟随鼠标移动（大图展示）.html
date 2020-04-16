@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			/*加了之后鼠标悬浮时图片不抖动？？*/
+			html,body{
+				overflow:hidden;
+			}
+			#box{
+				width: 768px;	/*(170+border2+margin10*2)*4=768*/
+				height: 192px;
+				margin: 0 auto;
+			}
+			#box li{
+				list-style: none;
+				float: left;
+				width: 170px;
+				height: 170px;
+				border: 1px solid #ddd;
+				margin: 10px;
+			}
+			#box li.active{
+				border:1px solid #a10000;
+			}
+			#big{
+				/*绝对定位*/
+				position:absolute;
+				width:400px;
+				height:400px;
+				border:2px solid #ddd;
+				display:none;
+			}
+			#big div{
+				/*绝对定位*/
+				position:absolute;
+				top:0;
+				left:0;
+				width:400px;
+				height:400px;
+				opacity:0.5;
+				filter:alpha(opacity=50);
+				background:#fff url(img/loading.gif) 50% 50% no-repeat;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li><img src="img/shirt_1.jpg" alt="" /></li>
+				<li><img src="img/shirt_2.jpg" alt="" /></li>
+				<li><img src="img/shirt_3.jpg" alt="" /></li>
+				<li><img src="img/shirt_4.jpg" alt="" /></li>
+			</ul>
+		</div>
+		<div id="big">
+			<div></div>
+		</div>
+	</body>
+</html>
+<script>
+	var oLis = document.getElementsByTagName("li")
+	var oBig = document.getElementById("big")
+	var oLoading = oBig.getElementsByTagName("div")[0];
+	
+	for(var i =0; i<oLis.length; i++){
+		oLis[i].index = i;
+		
+		//鼠标悬浮
+		oLis[i].onmouseover=function(){
+			//新建元素
+			var oImg = document.createElement("img");
+			//预加载图片：新建Image对象、赋值图片src链接
+			var img = new Image();
+			img.src = oImg.src = oLis[this.index].getElementsByTagName("img")[0].src.replace(".jpg","_big.jpg");
+			//插入子元素
+			oBig.appendChild(oImg);
+			//li的样式
+			this.className = 'active';
+			
+			//刚开始显示大图的位置和oLoading图标，预加载大图完成后才不显示
+			oBig.style.display = oLoading.style.display = "block";
+			//判断大图是否加载成功，关键是大图（大图比较大加载慢）
+			img.complete ? oLoading.style.display = "none" : (oImg.onload = function() {oLoading.style.display = "none";})
+		}
+		
+		//鼠标移动
+		oLis[i].onmousemove=function(event){
+			var event = event || window.event;
+			var iWidth = document.documentElement.offsetWidth - event.clientX;	/* iWidth = 文档宽度-事件触发时的x坐标，与oBig.offsetWidth比较 */
+			//设置big的top值
+			oBig.style.top = event.clientY + 20 + "px";
+			//设置big的left值, 如果右侧显示区域不够, 大图将在鼠标左侧显示
+			oBig.style.left = (iWidth < oBig.offsetWidth + 10 ? event.clientX - oBig.offsetWidth - 10 : event.clientX + 10) + "px";
+		}
+		
+		//鼠标离开
+		oLis[i].onmouseout=function(){
+			this.className = "";
+			oBig.style.display = "none";
+			//移除大图片
+			oBig.removeChild(oBig.lastChild)
+		}
+	}
+</script>

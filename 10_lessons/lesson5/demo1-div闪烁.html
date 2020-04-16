@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width: 200px;
+				margin: 10px auto;
+			}
+			#box img{
+				width: 200px;
+				height: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<img src="wujiaoxing.jpg" alt="" />
+		</div>
+	</body>
+</html>
+<script>
+	var oBox=document.getElementById("box")
+	var oImg=document.getElementsByTagName("img")[0]
+	var timer = null;	//定义空对象timer
+	oBox.onclick=function(){
+		var i=0;
+		clearInterval(timer);
+		timer=setInterval(function(){
+			oBox.style.display= i++ %2 ? "none":"block";
+			// 判断是否被2整除：每隔100豪秒消失一次
+			// 刚开始出现，点击后（i==0, 即false）消失，之后（i==1,即true）出现,...
+			i>6 && (clearInterval(timer))
+		}, 100)
+	}
+</script>
