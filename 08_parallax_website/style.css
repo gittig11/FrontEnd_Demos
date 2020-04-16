@@ -1,0 +1,69 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body,html{
+    height: 100%;   /*这样设置下面的 min-height: 100%; 才会起作用*/
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.8em;
+    color: #666;    /*浅灰色*/
+}
+.pimg1, .pimg2, .pimg3, .pimg4{
+    position: relative;
+    opacity: 0.7;   /*效果看起来像是加了一层浅灰色*/
+    background-position: center;   /*居中*/
+    background-size: cover; /*背景全覆盖*/
+    background-repeat: no-repeat;   /*不重复*/
+    background-attachment: fixed;   /*视差滚动效果*/
+}
+.pimg1{
+    background-image: url('img/bg-1.jpg');
+    min-height: 100%;
+}
+.pimg2{
+    background-image: url('img/bg-2.jpg');
+    min-height: 400px;
+}
+.pimg3{
+    background-image: url('img/bg-3.jpg');
+    min-height: 400px;
+}
+.pimg4{
+    background-image: url('img/bg-4.jpg');
+    min-height: 100%;
+}
+.section{
+    text-align: center; /*文本居中*/
+    padding: 50px 80px;
+}
+.section-light{
+    background: #f4f4f4;
+    color: #666;
+}
+.section-dark{
+    background: #282e34;
+    color: #ddd;
+}
+.ptext{
+    position: absolute; /* 绝对定位实现居中：1、top 2、width: 100%;text-align: center; */
+    top: 50%;
+    width: 100%;
+    text-align: center; /*设置宽度为100%后，text-align: center;就能实现文本的水平居中*/
+    color: #000;
+    font-size: 27px;
+    letter-spacing: 8px;    /*字间距*/
+    text-transform: uppercase;  /*转大写字母*/
+}
+.pimg1 .ptext .border,
+.pimg4 .ptext .border{
+    background-color: #111;
+    color: #fff;
+    padding: 20px;
+}
+/*对移动设备(页面宽度小于500px时),取消视差效果*/
+@media(max-width: 500px){
+    .pimg1, .pimg2, .pimg3, .pimg4{
+        background-attachment: scroll;
+    }
+}
