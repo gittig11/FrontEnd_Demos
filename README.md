@@ -3,9 +3,9 @@
 > Created on 2019-03-24
 
 
-* [10_lessons](https://gittig11.github.io/FrontEnd_Demos/10_lessons/home.html)    [参考教程](http://www.fgm.cc/learn/)
+* [10_lessons](https://gittig11.github.io/FrontEnd_Demos/10_lessons/home.html)    ——  [参考教程](http://www.fgm.cc/learn/)
 
-* [09_walking-dog](https://gittig11.github.io/FrontEnd_Demos/09_walking-dog/)
+* [09_walking-dog_Canvas动画效果](https://gittig11.github.io/FrontEnd_Demos/09_walking-dog/)
 * [08_parallax_website_视差滚动效果](https://gittig11.github.io/FrontEnd_Demos/08_parallax_website/)
 
 * [07_waterfall-sinanews](https://gittig11.github.io/FrontEnd_Demos/07_waterfall-sinanews/)
