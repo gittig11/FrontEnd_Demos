@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>js猜数字游戏</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html, body, .content {
+        width: 100%;
+        height: 100%;
+      }
+      .content {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      #inp1 {
+        width: 300px;
+        height: 30px;
+        line-height: 1.5em;
+        margin-right: 5px;
+        padding-left: 5px;
+      }
+      .btn {
+        width: 70px;
+        height: 30px;
+      }
+      .tryAgainBtn{
+        display: none;
+      }
+      #info {
+        width: 100%;
+        text-align: center;
+        font-size: 1em;
+        position: absolute;
+        bottom: 10px;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <input
+        id="inp1"
+        type="number"
+        placeholder="Input a number between 1 and 100."
+      />
+      <button class="btn checkBtn" id="checkBtn">Check</button>
+      <button class="btn tryAgainBtn" id="tryAgainBtn">Try again</button>
+      <p id="info"></p>
+    </div>
+  </body>
+
+<script>
+  function $(id) {
+    return document.getElementById(id);
+  }
+  let inp1 = $("inp1");
+  let checkBtn = $("checkBtn");
+  let tryAgainBtn = $("tryAgainBtn");
+  let info = $("info");
+  let guessNumber = 51; // 随机数
+  let checkTimes = 0; // 尝试次数
+  let prevNum = -1; // 保存上一次输入的数值
+
+  // 生成随机数
+  function generateRandomNumber() {
+    guessNumber = Math.floor(Math.random() * 100 + 1);
+    console.log("产生的随机数字是：" + guessNumber);
+  }
+
+  // 1.页面载入后自动产生随机数
+  window.onload = function () {
+    // 取消事件的默认行为
+    // window.event ? (window.event.returnValue = false) : e.preventDefault();
+    generateRandomNumber();
+  };
+  
+  // 2.设置按钮的点击事件
+  checkBtn.onclick = function (e) {
+    // window.event ? (window.event.returnValue = false) : e.preventDefault();
+    checkRange(inp1.value);
+  };
+  tryAgainBtn.onclick = function (e) {
+    // window.event ? (window.event.returnValue = false) : e.preventDefault();
+    generateRandomNumber();
+    inp1.value = "";
+    checkBtn.style.display = "block";
+    tryAgainBtn.style.display = "none";
+    info.innerText = "";
+  };
+  
+  // 3.检查输入数字的范围
+  function checkRange(num) {
+    if (num < 1) {
+      info.innerText = "Input a number between 1 and 100.";
+      return false;
+    } else if (num > 100) {
+      info.innerText = "Input a number between 1 and 100.";
+      return false;
+    } else {
+      checkNum(inp1.value);
+    }
+  }
+  
+  // 4.检查输入数字的大小
+  function checkNum(num) {
+    // console.log(prevNum, num);
+    if (prevNum === num) return;
+    // 计数、保存输入的数字
+    checkTimes++;
+    prevNum = inp1.value;
+    // 判断输入是否正确
+    if (num == guessNumber) {
+      // 游戏结束时，设置按钮不可点击
+      checkBtn.disabled = true;
+      let tip = `Bingo! 尝试了${checkTimes}次。`;
+      info.innerText = tip;
+      console.log(tip);
+      // 按钮恢复可点击，并显示刷新按钮
+      setTimeout(() => {
+        checkBtn.disabled = false;
+        checkBtn.style.display = "none";
+        tryAgainBtn.style.display = "block";
+      }, 3000);
+    } else if (num < guessNumber) {
+      console.log(num + "小了!");
+      // 再大一点
+      info.innerText = num + "小了!";
+    } else {
+      console.log(num + "大了!");
+      info.innerText = num + "大了!";
+    }
+  }
+</script>
+</html>

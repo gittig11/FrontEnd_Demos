@@ -2,6 +2,9 @@
 
 > Created on 2019-03-24
 
+* 12_games
+	*
+	* [1. 猜数字游戏](https://gittig11.github.io/FrontEnd_Demos/12_games/1_guess-number.html)
 
 * [11_hello_bike](https://gittig11.github.io/FrontEnd_Demos/11_hello_bike/index.html)
 	> [参考](https://c3x.me/bike.html?n=9510212658&b)
