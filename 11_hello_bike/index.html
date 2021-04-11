@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>哈罗单车</title>
+  <style>
+  *{
+    box-sizing: border-box;
+  }
+  html, body, .container{
+    height: 100%;
+    margin: 0;
+  }
+  .icon {
+    background: transparent center no-repeat;
+    background-size: contain;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .container{
+    position: relative;
+  }
+  .main-container{
+    position: relative;
+    /*限制高度100%，超出的滚动。这样.download-wrap才能固定在页面底部*/
+    height: 100%;
+    overflow: auto;
+  }
+  .bg-image{
+    background: url("./img/n_main_no_logo.png") center / cover no-repeat;
+    width: 100%;
+    height: 100%;
+  }
+  .bg-image > img{
+    width: 25%;
+    position: absolute;
+    left: 5%;
+    top: 2.5%;
+  }
+  .img-step-wrap{
+    /* 去除行内元素（图片）的空白间隔 */
+    font-size: 0;
+  }
+  .img-step-wrap > img {
+    width: 100%;
+  }
+
+  .download-wrap{
+    width: 100%;
+    height: 50px;
+    padding: 0 15px;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+  }
+  .n-btn-download{
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    font-size: 18px;
+    background: linear-gradient(to right, #278eee, #1e6ef5);
+    box-shadow: 0 4px 12px rgb(0 27 109 / 40%);
+    color: #fff;
+    display: block;
+    border: none;
+  }
+  .btn.focus,
+  .btn:focus,
+  .btn:hover {
+    text-decoration: none;
+    outline: none;
+  }
+  .btn.active,
+  .btn:active {
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125)
+  }
+  </style>
+</head>
+<body>
+  <div class="container n-bike">
+    <div class="main-container">
+      <div class="bg-image">
+        <img src="./img/logo_white_goout.png" alt="">
+      </div>
+      <div class="img-step-wrap">
+        <img src="./img/n_step_1.jpg" alt="">
+      </div>
+      <div class="img-step-wrap">
+        <img src="./img/n_step_2.png" alt="">
+      </div>
+    </div>
+    <div class="download-wrap">
+      <button class="n-btn-download btn">下载哈罗出行APP</button> 
+    </div>
+  </div>
+  <script>
+  </script>
+</body>
+</html>
