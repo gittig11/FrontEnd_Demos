@@ -90,6 +90,7 @@
   tryAgainBtn.onclick = function (e) {
     // window.event ? (window.event.returnValue = false) : e.preventDefault();
     generateRandomNumber();
+    checkTimes = 0;
     inp1.value = "";
     checkBtn.style.display = "block";
     tryAgainBtn.style.display = "none";
